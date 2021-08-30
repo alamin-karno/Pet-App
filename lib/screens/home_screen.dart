@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/configuration/configuration.dart';
+import 'package:pet_app/screens/pet_details.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -178,134 +179,121 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 20.0,
                     ),
-                    Container(
-                      height: 230,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Stack(
+                    ListView.builder(
+                      physics: ScrollPhysics(),
+                      itemCount: catMapList.length,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemBuilder: (context,index){
+                        return GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => PetDetails(catDetailsMap: catMapList[index],)));
+                          },
+                          child: Container(
+                            height: 230,
+                            margin: EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.blueGrey[200],
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: shadowList,
-                                  ),
-                                  margin: EdgeInsets.only(top: 45),
-                                ),
-                                Align(
-                                    child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset('images/pet_cat2.png'),
-                                )),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.only(top: 65, bottom: 20),
-                              padding: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    bottomRight: Radius.circular(20)),
-                                    boxShadow: shadowList,
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Expanded(
+                                  child: Stack(
                                     children: [
-                                      Text('Sola',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 21.0,
-                                        color: Colors.grey[600],
-                                      ),),
-                                      Icon(
-                                        Icons.no_encryption_gmailerrorred_outlined,
-                                        color: Colors.grey[500],
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: (index % 2 == 0) ? Colors.blueGrey[200] : Colors.orangeAccent[200] ,
+                                          borderRadius: BorderRadius.circular(20),
+                                          boxShadow: shadowList,
+                                        ),
+                                        margin: EdgeInsets.only(top: 40),
                                       ),
+                                      Align(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Hero(
+                                                tag: 'pet${catMapList[index]['id']}',
+                                                child: Image.asset(catMapList[index]['imagePath'])),
+                                          )),
                                     ],
                                   ),
-                                  Text('Abyssinion cat',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey[500],
-                                  ),),
-                                  Text('2 years old',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey[400],
-                                  ),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.location_on,color: primaryColor,size: 18,),
-                                      SizedBox(width: 3,),
-                                      Text('Distance: 3.5 km',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[400],
-                                      ),),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Container(
-                      height: 230,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Stack(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange[200],
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: shadowList,
-                                  ),
-                                  margin: EdgeInsets.only(top: 45),
                                 ),
-                                Align(
-                                    child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset('images/pet_cat1.png'),
-                                )),
+                                Expanded(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 65, bottom: 20),
+                                    padding: EdgeInsets.all(15),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(20),
+                                          bottomRight: Radius.circular(20)),
+                                      boxShadow: shadowList,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              catMapList[index]['name'],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 21.0,
+                                                color: Colors.grey[600],
+                                              ),
+                                            ),
+                                            Icon(
+                                              Icons.sanitizer,
+                                              color: Colors.grey[500],
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          catMapList[index]['Species'],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey[500],
+                                          ),
+                                        ),
+                                        Text(
+                                          catMapList[index]['year']+' years old',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey[400],
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.location_on,
+                                              color: primaryColor,
+                                              size: 18,
+                                            ),
+                                            SizedBox(
+                                              width: 3,
+                                            ),
+                                            Text(
+                                              'Distance: '+catMapList[index]['distance'],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.grey[400],
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.only(top: 65, bottom: 20),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    bottomRight: Radius.circular(20)),
-                                boxShadow: shadowList,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
+                        );
+                      },
                     ),
                   ],
                 ),

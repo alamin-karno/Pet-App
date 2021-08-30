@@ -20,7 +20,23 @@ List<Map> categories = [
 ];
 
 List<Map> catMapList = [
-  {"id":1,"name":'Sola',"imagePath":'images/pet_cat2.png',
+  {"id":0,"name":'Sola',"imagePath":'images/pet_cat2.png',
+    "Species":'Abyssinion cat',"sex":'Female',
+    "year":'2',"distance":'3.6 km',"location":'5 Bulvorno-Kudriovska Street, Kyiv',},
+  {"id":1,"name":'Sola',"imagePath":'images/pet_cat1.png',
+    "Species":'Abyssinion cat',"sex":'Female',
+    "year":'2',"distance":'3.6 km',"location":'5 Bulvorno-Kudriovska Street, Kyiv',},
+  {"id":2,"name":'Sola',"imagePath":'images/pet_cat2.png',
+    "Species":'Abyssinion cat',"sex":'Female',
+    "year":'2',"distance":'3.6 km',"location":'5 Bulvorno-Kudriovska Street, Kyiv',},
+  {"id":3,"name":'Sola',"imagePath":'images/pet_cat1.png',
+    "Species":'Abyssinion cat',"sex":'Female',
+    "year":'2',"distance":'3.6 km',"location":'5 Bulvorno-Kudriovska Street, Kyiv',},
+  {"id":4,"name":'Sola',"imagePath":'images/pet_cat2.png',
+    "Species":'Abyssinion cat',"sex":'Female',
+    "year":'2',"distance":'3.6 km',"location":'5 Bulvorno-Kudriovska Street, Kyiv',},
+  {"id":5,"name":'Sola',"imagePath":'images/pet_cat1.png',
     "Species":'Abyssinion cat',"sex":'Female',
     "year":'2',"distance":'3.6 km',"location":'5 Bulvorno-Kudriovska Street, Kyiv',}
+
 ];
