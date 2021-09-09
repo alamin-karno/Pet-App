@@ -72,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               icon: Icon(
                                 Icons.location_on,
                                 color: primaryColor,
+                                size: 20,
                               ),
                             ),
                             Text(
@@ -243,8 +244,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 color: Colors.grey[600],
                                               ),
                                             ),
-                                            Icon(
-                                              Icons.sanitizer,
+                                            (catMapList[index]['sex'] == 'male') ? Icon(
+                                              Icons.male_rounded,
+                                              color: Colors.grey[500],
+                                            ) : Icon(
+                                              Icons.female_rounded,
                                               color: Colors.grey[500],
                                             ),
                                           ],
@@ -265,8 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.location_on,
